@@ -1,40 +1,33 @@
-// packages required for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const {Triangle, Circle, Square} = require('./lib/shape');
+const { Triangle, Circle, Square } = require('./lib/shapes');
 
-
-// array of questions for user input to create a logo
 async function createLogo() {
   const shapeChoices = ['Triangle', 'Circle', 'Square'];
 
-
-  // shape prompt
   const shapePrompt = await inquirer.prompt([
     {
       type: 'list',
       name: 'shape',
-      message: 'What shape would you like to create?',
-      choices: shapeChoices
-    }
+      message: 'Choose a shape:',
+      choices: shapeChoices,
+    },
   ]);
 
-  // color prompt
   const colorPrompt = await inquirer.prompt([
     {
       type: 'input',
       name: 'color',
-      message: 'What color would you like to use? (color keyword or hex code)'
-    }
+      message: 'Enter the shape color (color keyword or hexadecimal):',
+    },
   ]);
 
-  // text prompt
   const textPrompt = await inquirer.prompt([
     {
       type: 'input',
       name: 'text',
-      message: 'What text would you like to use?'
-    }
+      message: 'Enter the text for the logo:',
+    },
   ]);
 
   let shape;
@@ -50,7 +43,7 @@ async function createLogo() {
       shape = new Square();
       break;
     default:
-      console.log('Invalid shape');
+      console.error('Invalid shape choice');
       return;
   }
 
@@ -59,12 +52,9 @@ async function createLogo() {
 
   const svg = shape.render();
 
+  fs.writeFileSync('examples/logo.svg', svg);
 
-  // Save to file pat
-  fs.writeFile('./examples/logo.svg', svg, (err) => {
-    if (err) throw err;
-    console.log('Logo created!');
-  });
+  console.log('Generated logo.svg');
 }
 
 createLogo();
