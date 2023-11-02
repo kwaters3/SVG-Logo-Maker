@@ -14,6 +14,7 @@ The SVG logo maker is part of Object Oriented Programming, that is built using N
 - [Installation](#installation)
 - [Usage](#usage)
 - [Dependencies](#dependencies)
+- [Test](#test)
 - [License](#license)
 - [Questions](#questions)
 
@@ -39,9 +40,11 @@ The SVG logo maker is part of Object Oriented Programming, that is built using N
 
 #### How to use the application:
 
-- First, install the given application/project
+- First, install the given application/project/dependecies.
 
-- Next, the command-line application will prompt the user with the following: 
+- Next, the command-line application will prompt the user with the following: `choose a shape [Triangle, Circle, Square]`, `Enter 3 character text`, `Choose text color`, & `Choose shape background color`.
+
+- Finally, when the command-prompts are complete, `Generated logo.svg` will appear in the console and your new SVG logo will be available in the newly generated SVG file. 
 
 ## Dependencies
 
@@ -49,6 +52,10 @@ The SVG logo maker is part of Object Oriented Programming, that is built using N
 - [jest](https://www.npmjs.com/package/jest)
 
 
+## Test
+
+To run unit testing, open the terminal, and the use the command: `npm run test`.
+<br/>There is currently one test suite, testing for 3 structures/tests. 
 
 
 ## License
