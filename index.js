@@ -89,7 +89,7 @@ function promptUser() {
         promptUser();
       } else {
         // Calling write file function to generate SVG file
-        writeToFile("./examples/logo.svg", answers);
+        writeToFile("logo.svg", answers);
       }
     });
 }
