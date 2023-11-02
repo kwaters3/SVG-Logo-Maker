@@ -33,7 +33,6 @@ The SVG logo maker is part of Object Oriented Programming, that is built using N
 
 - Then, invoke the application by using the following command: `node index.js` 
 
-
 - Finally, the user will have access to the SVG logo Maker to specially craft and design their own logo. 
 
 ## Usage
