@@ -13,7 +13,7 @@
   "author": "Katie Waters",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^9.2.11",
+    "inquirer": "^8.2.6",
     "jest": "^29.7.0",
     "svg.js": "^2.7.1"
   }
