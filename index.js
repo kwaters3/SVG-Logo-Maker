@@ -7,6 +7,8 @@ const fs = require("fs");
 // Importing classes from ./lib/shapes directory
 const { Triangle, Square, Circle } = require("./lib/shapes");
 
+
+
 // Function writes the SVG file using user answers from inquirer prompts
 function writeToFile(fileName, answers) {
   // File starts as an empty string
@@ -18,6 +20,8 @@ function writeToFile(fileName, answers) {
   svgString += "<g>";
   // Takes user input for shape choice and inserts it into SVG file
   svgString += `${answers.shape}`;
+
+
 
   // Conditional check takes users input from choices array and then adds polygon properties and shape color to SVG string
   let shapeChoice;
@@ -32,49 +36,49 @@ function writeToFile(fileName, answers) {
     svgString += `<circle cx="150" cy="115" r="80" fill="${answers.shapeBackgroundColor}"/>`;
   }
 
-  // <text> tag gives rise to text alignment, text-content/text-color taken in from user prompt and gives default font size of "40"
+  // Takes user input for text color and inserts it into SVG file
   svgString += `<text x="150" y="130" text-anchor="middle" font-size="40" fill="${answers.textColor}">${answers.text}</text>`;
   // Closing </g> tag
   svgString += "</g>";
   // Closing </svg> tag
   svgString += "</svg>";
 
-  // Using file system module to generate svg file, takes in file name given in the promptUser function, the svg string, and a ternary operator which handles logging any errors, or a "Generated logo.svg" message to the console  
+
+  // Writes SVG file to ./examples directory
   fs.writeFile(fileName, svgString, (err) => {
     err ? console.log(err) : console.log("Generated logo.svg");
   });
 }
 
-// This function utilizes inquirer .prompt to prompt the user to answer questions in the command line and save user input
+// Function prompts user for input using inquirer
 function promptUser() {
   inquirer
     .prompt([
+
+      // Shape choice prompt
+      {
+        type: 'list',
+        name: 'shape',
+        message: 'Choose a shape:',
+        choices: ['Triangle', 'Circle', 'Square'],
+    },
+
       // Text prompt
       {
         type: "input",
-        message:
-          "What text would you like you logo to display? (Enter up to three characters)",
+        message: "Enter the text for the logo (3 characters max):",
         name: "text",
       },
       // Text color prompt
       {
         type: "input",
-        message:
-          "Choose text color (Enter color keyword OR a hexadecimal number)",
+        message: "Choose text color (color keyword or hex #):",
         name: "textColor",
-      },
-      // Shape choice prompt
-      {
-        type: "list",
-        message: "What shape would you like the logo to render?",
-        choices: ["Triangle", "Square", "Circle"],
-        name: "shape",
       },
       // Shape color prompt
       {
         type: "input",
-        message:
-          "Choose shapes color (Enter color keyword OR a hexadecimal number)",
+        message: "Choose shape background color (color keyword OR hex #):",
         name: "shapeBackgroundColor",
       },
     ])
@@ -85,7 +89,7 @@ function promptUser() {
         promptUser();
       } else {
         // Calling write file function to generate SVG file
-        writeToFile("logo.svg", answers);
+        writeToFile("./examples/logo.svg", answers);
       }
     });
 }
