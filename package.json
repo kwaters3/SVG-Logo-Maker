@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test-shapes": "jest lib/shapes.test.js",
     "start": "node index.js"
   },
   "keywords": [
