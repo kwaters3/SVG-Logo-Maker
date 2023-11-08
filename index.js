@@ -1,7 +1,5 @@
-// Inquirer (node package manager) import
+// Required Packages
 const inquirer = require("inquirer");
-
-// File system module (node package manager) import
 const fs = require("fs");
 
 // Importing classes from ./lib/shapes directory
@@ -23,7 +21,7 @@ function writeToFile(fileName, answers) {
 
 
 
-  // Conditional check takes users input from choices array and then adds polygon properties and shape color to SVG string
+  // Takes users input from choices array and adds shape properties (color/text)
   let shapeChoice;
   if (answers.shape === "Triangle") {
     shapeChoice = new Triangle();
@@ -38,15 +36,17 @@ function writeToFile(fileName, answers) {
 
   // Takes user input for text color and inserts it into SVG file
   svgString += `<text x="150" y="130" text-anchor="middle" font-size="40" fill="${answers.textColor}">${answers.text}</text>`;
-  // Closing </g> tag
+  // Closing </g> tag from line 18
   svgString += "</g>";
-  // Closing </svg> tag
+  // Closing </svg> tag from line 16
   svgString += "</svg>";
 
 
-  // Writes SVG file to ./examples directory
+  // Writes SVG file to directory
   fs.writeFile(fileName, svgString, (err) => {
-    err ? console.log(err) : console.log("Generated logo.svg");
+    err 
+    ? console.log(err) 
+    : console.log("Generated logo.svg");
   });
 }
 
@@ -69,12 +69,14 @@ function promptUser() {
         message: "Enter the text for the logo (3 characters max):",
         name: "text",
       },
+
       // Text color prompt
       {
         type: "input",
         message: "Choose text color (color keyword or hex #):",
         name: "textColor",
       },
+
       // Shape color prompt
       {
         type: "input",
@@ -82,17 +84,18 @@ function promptUser() {
         name: "shapeBackgroundColor",
       },
     ])
+    // Promise to handle user input
     .then((answers) => {
-      // Error handling for text prompt (user must enter 3 characters or less for logo to generate)
+      // If user enters more than 3 characters, prompt user again
       if (answers.text.length > 3) {
         console.log("Must enter a value of no more than 3 characters");
         promptUser();
       } else {
-        // Calling write file function to generate SVG file
+        // Calling write file function to generate SVG file to directory
         writeToFile("logo.svg", answers);
       }
     });
 }
 
-// Calling promptUser function so inquirer prompts fire off when application is ran
+// Calling promptUser function so inquirer prompts will start when npm start runs
 promptUser();
