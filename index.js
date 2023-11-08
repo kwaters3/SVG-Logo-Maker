@@ -86,7 +86,7 @@ function promptUser() {
     ])
     // Promise to handle user input
     .then((answers) => {
-      // If user enters more than 3 characters, prompt user again
+      // If user enters more than 3 characters, then the prompt will start over - but the user has to complete the entire prompt again
       if (answers.text.length > 3) {
         console.log("Must enter a value of no more than 3 characters");
         promptUser();
