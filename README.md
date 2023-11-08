@@ -22,7 +22,7 @@ The SVG logo maker is part of Object Oriented Programming, that is built using N
 
 #### Click on the image below to reveal the video walk-through/demonstration:
 
-[![Screenshot](./images/SVG.png)](https://drive.google.com/file/d/1QbotX_8gA8kMAfb2h3Fc35aLuqua1c3N/view)
+[![Screenshot](./images/SVG.png)](https://youtu.be/O2hfsgFkzxw)
 
 ## Installation
 
