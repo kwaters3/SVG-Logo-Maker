@@ -28,7 +28,9 @@ The SVG logo maker is part of Object Oriented Programming, that is built using N
 
 #### How to install the application:
 
-- First, clone the git repository from [GitHub](git@github.com:kwaters3/SVG-Logo-Maker.git)
+- To follow along - Open the [VIDEO WALKTHROUGH](https://youtu.be/O2hfsgFkzxw) for guidance. 
+
+- First, clone the git repository from [GitHub](https://github.com/kwaters3/SVG-Logo-Maker#click-on-the-image-below-to-reveal-the-video-walk-throughdemonstration)
 
 - Next, install the required packages by using the following command: `npm install`
 
